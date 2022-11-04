@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+
 require_once './libs/router.php';
 require_once './app/controllers/peliculaController.php';
 
@@ -8,7 +9,8 @@ require_once './app/controllers/peliculaController.php';
 $router = new Router();
 
 // defina la tabla de ruteo
-$router->addRoute('peliculas', 'GET', 'PeliculasController', 'obtenerTodasLasPeliculas');
+$router->addRoute('api/peliculas', 'GET', 'PeliculasController', 'obtenerTodasLasPeliculas');
+
 
 
 // ejecuta la ruta (sea cual sea)
