@@ -26,4 +26,15 @@ class PeliculasController
         $peliculas = $this->model->conseguirTodasLasPeliculas();
         $this->view->respuesta($peliculas);
     }
+    public function obtenerUnaPelicula($params = null)
+    {
+        $id = $params[':ID'];
+        $pelicula = $this->model->conseguirPeliculaDB($id);
+
+        if ($pelicula){
+            $this->view->respuesta($pelicula);
+        }else{
+            $this->view->respuesta("La tarea con el id=$id no existe", 404);
+        }
+    }
 }
