@@ -18,15 +18,10 @@ class PeliculasModel
     }
     public function conseguirPeliculaDB($id)
     {
-        $query = $this->db->prepare("SELECT * FROM peliculas WHERE id_peliculas = ?");
+        $query = $this->db->prepare("SELECT * FROM peliculas LEFT JOIN generos ON peliculas.id_genero = generos.id_genero WHERE id_peliculas = ?");
         $query->execute([$id]);
-        $pelicula = $query->fetchAll(PDO::FETCH_OBJ);
-        foreach ($pelicula as $genre) {
-            $query = $this->db->prepare("SELECT * FROM generos WHERE id_genero = ?");
-            $query->execute([$genre->id_genero]);
-            $genero = $query->fetch(PDO::FETCH_OBJ);
-            $genre->id_genero = $genero->genero;
-        }
+        $pelicula = $query->fetch(PDO::FETCH_OBJ);
         return $pelicula;
+        /* "SELECT * FROM peliculas LEFT JOIN generos ON id_genero = id_genero WHERE id_peliculas = ?" */
     }
 }
