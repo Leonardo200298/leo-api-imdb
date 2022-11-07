@@ -11,6 +11,8 @@ $router = new Router();
 // defina la tabla de ruteo
 $router->addRoute('api/peliculas', 'GET', 'PeliculasController', 'obtenerTodasLasPeliculas');
 $router->addRoute('api/peliculas/:ID', 'GET', 'PeliculasController', 'obtenerUnaPelicula');
+$router->addRoute('api/peliculas/:ID', 'DELETE', 'PeliculasController', 'borrarUnaPelicula');
+$router->addRoute('api/peliculas', 'POST', 'PeliculasController', 'insertarPelicula');
 
 
 

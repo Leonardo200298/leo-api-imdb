@@ -24,4 +24,11 @@ class PeliculasModel
         return $pelicula;
         /* "SELECT * FROM peliculas LEFT JOIN generos ON id_genero = id_genero WHERE id_peliculas = ?" */
     }
+    public function borrarPelicula($id){
+        $query = $this->db->prepare("DELETE FROM peliculas WHERE id_peliculas = ?");
+        $query->execute([$id]);
+    }
+    public function insertarPelicula(){
+        
+    }
 }
