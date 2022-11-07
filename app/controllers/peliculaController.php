@@ -48,4 +48,14 @@ class PeliculasController
             $this->view->respuesta("La tarea con el id=$id no existe", 404);
         }
     }
+    public function insertarPelicula($params = null){
+        $datosDelForm = $this->getData();
+        if (empty($datosDelForm->nombre) || empty($datosDelForm->anio) || empty($datosDelForm->id_genero)) {
+            $this->view->respuesta("Complete los datos",400);
+        }else{
+            $id=$this->model->insertarPeliculaDB($datosDelForm->nombre,$datosDelForm->anio,$datosDelForm->id_genero);
+            $peliculaCreada = $this->model->conseguirPeliculaDB($id);
+            $this->view->respuesta($peliculaCreada,201);
+        }
+    }
 }

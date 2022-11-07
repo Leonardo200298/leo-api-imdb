@@ -28,7 +28,9 @@ class PeliculasModel
         $query = $this->db->prepare("DELETE FROM peliculas WHERE id_peliculas = ?");
         $query->execute([$id]);
     }
-    public function insertarPelicula(){
-        
+    public function insertarPeliculaDB($nombre, $anio, $id_genero){
+        $query = $this->db->prepare("INSERT INTO peliculas (nombre, anio, id_genero) VALUES (?, ?, ?)");
+        $query->execute([$nombre, $anio, $id_genero]);
+        return $this->db->lastInsertId();
     }
 }
