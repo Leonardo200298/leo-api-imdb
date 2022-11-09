@@ -33,4 +33,9 @@ class PeliculasModel
         $query->execute([$nombre, $anio, $id_genero]);
         return $this->db->lastInsertId();
     }
+    public function editarPelicula($nombre, $anio, $id_genero, $id_peliculas){
+        $query = $this->db->prepare("UPDATE peliculas SET nombre = ?, anio = ?, id_genero = ? WHERE id_peliculas = ?");
+        $query->execute([$nombre, $anio, $id_genero, $id_peliculas]);
+
+    }
 }

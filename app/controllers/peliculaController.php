@@ -58,4 +58,20 @@ class PeliculasController
             $this->view->respuesta($peliculaCreada,201);
         }
     }
+    public function editarPelicula($params = null){
+        $id = $params[':ID'];
+        $peliculaEditada = $this->model->conseguirPeliculaDB($id); 
+        if ($peliculaEditada){
+            $datosDelForm = $this->getData();
+            $nombre = $datosDelForm-> nombre;
+            $anio = $datosDelForm-> anio;
+            $id_genero = $datosDelForm-> id_genero;
+            $id_peliculas = $datosDelForm-> id_peliculas;
+            $peliculaEditada=$this->model->editarPelicula($nombre,$anio,$id_genero,$id_peliculas);
+            $peliculaEditada = $this->model->conseguirPeliculaDB($id);
+            $this->view->respuesta($peliculaEditada,200);
+        }else{         
+            $this->view->respuesta("No se pueden dejar estos campos sin editar",400);   
+        }
+    }
 }

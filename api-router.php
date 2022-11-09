@@ -13,6 +13,7 @@ $router->addRoute('api/peliculas', 'GET', 'PeliculasController', 'obtenerTodasLa
 $router->addRoute('api/peliculas/:ID', 'GET', 'PeliculasController', 'obtenerUnaPelicula');
 $router->addRoute('api/peliculas/:ID', 'DELETE', 'PeliculasController', 'borrarUnaPelicula');
 $router->addRoute('api/peliculas', 'POST', 'PeliculasController', 'insertarPelicula');
+$router->addRoute('api/peliculas/:ID', 'PUT', 'PeliculasController', 'editarPelicula');
 
 
 
