@@ -9,10 +9,16 @@ class PeliculasModel
         $this->db = new PDO("mysql:host=localhost;" . "dbname=db_peliculas_pe;" . "charset=utf8", "root", "");
     }
 
-    public function conseguirTodasLasPeliculas()
+    public function conseguirTodasLasPeliculas($ordenarPor = null, $orden = null)
     {
-        $query = $this->db->prepare("SELECT * FROM peliculas");
-        $query->execute();
+        if ((isset($ordenarPor))&&(isset($orden))) {
+            $query = $this->db->prepare("SELECT * FROM peliculas ORDER BY $ordenarPor $orden");
+            $query->execute();
+        } else {
+
+            $query = $this->db->prepare("SELECT * FROM peliculas");
+            $query->execute();
+        }
         $peliculas = $query->fetchAll(PDO::FETCH_OBJ);
         return $peliculas;
     }
@@ -24,18 +30,20 @@ class PeliculasModel
         return $pelicula;
         /* "SELECT * FROM peliculas LEFT JOIN generos ON id_genero = id_genero WHERE id_peliculas = ?" */
     }
-    public function borrarPelicula($id){
+    public function borrarPelicula($id)
+    {
         $query = $this->db->prepare("DELETE FROM peliculas WHERE id_peliculas = ?");
         $query->execute([$id]);
     }
-    public function insertarPeliculaDB($nombre, $anio, $id_genero){
+    public function insertarPeliculaDB($nombre, $anio, $id_genero)
+    {
         $query = $this->db->prepare("INSERT INTO peliculas (nombre, anio, id_genero) VALUES (?, ?, ?)");
         $query->execute([$nombre, $anio, $id_genero]);
         return $this->db->lastInsertId();
     }
-    public function editarPelicula($nombre, $anio, $id_genero, $id_peliculas){
+    public function editarPelicula($nombre, $anio, $id_genero, $id_peliculas)
+    {
         $query = $this->db->prepare("UPDATE peliculas SET nombre = ?, anio = ?, id_genero = ? WHERE id_peliculas = ?");
         $query->execute([$nombre, $anio, $id_genero, $id_peliculas]);
-
     }
 }

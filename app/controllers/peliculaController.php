@@ -23,55 +23,74 @@ class PeliculasController
 
     public function obtenerTodasLasPeliculas($params = null)
     {
-        $peliculas = $this->model->conseguirTodasLasPeliculas();
-        $this->view->respuesta($peliculas);
+        /* http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=ASC */
+        if (isset($_GET['ordenarPor'])) {
+            if (isset($_GET['ordenarPor']) && isset($_GET['orden'])) {
+                var_dump("Entre");
+                $peliculas = $this->model->conseguirTodasLasPeliculas($_GET['ordenarPor'], $_GET['orden']);
+                if (!empty($peliculas)) {
+                    $this->view->respuesta($peliculas);
+                } else {
+                    $this->view->respuesta("No se han encontrado peliculas", 400);
+                }
+            }
+        } else {
+
+            $peliculas = $this->model->conseguirTodasLasPeliculas();
+            if (!empty($peliculas)) {
+                $this->view->respuesta($peliculas);
+            }
+        }
     }
     public function obtenerUnaPelicula($params = null)
     {
         $id = $params[':ID'];
         $pelicula = $this->model->conseguirPeliculaDB($id);
 
-        if ($pelicula){
+        if ($pelicula) {
             $this->view->respuesta($pelicula);
-        }else{
+        } else {
             $this->view->respuesta("La tarea con el id=$id no existe", 404);
         }
     }
-    public function borrarUnaPelicula($params = null){
+    public function borrarUnaPelicula($params = null)
+    {
         $id = $params[':ID'];
         $peliculaABorrar = $this->model->conseguirPeliculaDB($id);
 
-        if ($peliculaABorrar){
+        if ($peliculaABorrar) {
             $this->model->borrarPelicula($id);
             $this->view->respuesta($peliculaABorrar);
-        }else{
+        } else {
             $this->view->respuesta("La tarea con el id=$id no existe", 404);
         }
     }
-    public function insertarPelicula($params = null){
+    public function insertarPelicula($params = null)
+    {
         $datosDelForm = $this->getData();
         if (empty($datosDelForm->nombre) || empty($datosDelForm->anio) || empty($datosDelForm->id_genero)) {
-            $this->view->respuesta("Complete los datos",400);
-        }else{
-            $id=$this->model->insertarPeliculaDB($datosDelForm->nombre,$datosDelForm->anio,$datosDelForm->id_genero);
+            $this->view->respuesta("Complete los datos", 400);
+        } else {
+            $id = $this->model->insertarPeliculaDB($datosDelForm->nombre, $datosDelForm->anio, $datosDelForm->id_genero);
             $peliculaCreada = $this->model->conseguirPeliculaDB($id);
-            $this->view->respuesta($peliculaCreada,201);
+            $this->view->respuesta($peliculaCreada, 201);
         }
     }
-    public function editarPelicula($params = null){
+    public function editarPelicula($params = null)
+    {
         $id = $params[':ID'];
-        $peliculaEditada = $this->model->conseguirPeliculaDB($id); 
-        if ($peliculaEditada){
+        $peliculaEditada = $this->model->conseguirPeliculaDB($id);
+        if ($peliculaEditada) {
             $datosDelForm = $this->getData();
-            $nombre = $datosDelForm-> nombre;
-            $anio = $datosDelForm-> anio;
-            $id_genero = $datosDelForm-> id_genero;
-            $id_peliculas = $datosDelForm-> id_peliculas;
-            $peliculaEditada=$this->model->editarPelicula($nombre,$anio,$id_genero,$id_peliculas);
+            $nombre = $datosDelForm->nombre;
+            $anio = $datosDelForm->anio;
+            $id_genero = $datosDelForm->id_genero;
+            $id_peliculas = $datosDelForm->id_peliculas;
+            $peliculaEditada = $this->model->editarPelicula($nombre, $anio, $id_genero, $id_peliculas);
             $peliculaEditada = $this->model->conseguirPeliculaDB($id);
-            $this->view->respuesta($peliculaEditada,200);
-        }else{         
-            $this->view->respuesta("No se pueden dejar estos campos sin editar",400);   
+            $this->view->respuesta($peliculaEditada, 200);
+        } else {
+            $this->view->respuesta("No se pueden dejar estos campos sin editar", 400);
         }
     }
 }
