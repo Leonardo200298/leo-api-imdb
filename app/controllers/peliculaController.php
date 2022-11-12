@@ -74,10 +74,12 @@ class PeliculasController
         $datosDelForm = $this->getData();
         if (empty($datosDelForm->nombre) || empty($datosDelForm->anio) || empty($datosDelForm->id_genero)) {
             $this->view->respuesta("Complete los datos", 400);
-        } else {
+        } else if (is_numeric($datosDelForm->anio) || is_numeric($datosDelForm->id_genero)){
             $id = $this->model->insertarPeliculaDB($datosDelForm->nombre, $datosDelForm->anio, $datosDelForm->id_genero);
             $peliculaCreada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaCreada, 201);
+        }else{
+            $this->view->respuesta("Los campos año y id_genero deben ser de tipo number", 404);
         }
     }
     public function editarPelicula($params = null)
