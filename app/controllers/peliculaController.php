@@ -85,8 +85,8 @@ class PeliculasController
     public function editarPelicula($params = null)
     {
         $id = $params[':ID'];
-        $peliculaEditada = $this->model->conseguirPeliculaDB($id);
-        if ($peliculaEditada) {
+        $peliculaAEditar = $this->model->conseguirPeliculaDB($id);
+        if ($peliculaAEditar) {
             $datosDelForm = $this->getData();
             $nombre = $datosDelForm->nombre;
             $anio = $datosDelForm->anio;
