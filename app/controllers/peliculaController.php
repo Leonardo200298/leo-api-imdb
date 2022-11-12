@@ -24,18 +24,18 @@ class PeliculasController
     public function obtenerTodasLasPeliculas($params = null)
     {
         /* http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=ASC */
-        if (isset($_GET['ordenarPor'])) {
+        if (isset($_GET['ordenarPor']) || isset($_GET['orden'])) {
             if (isset($_GET['ordenarPor']) && isset($_GET['orden'])) {
-                var_dump("Entre");
                 $peliculas = $this->model->conseguirTodasLasPeliculas($_GET['ordenarPor'], $_GET['orden']);
                 if (!empty($peliculas)) {
                     $this->view->respuesta($peliculas);
                 } else {
-                    $this->view->respuesta("No se han encontrado peliculas", 400);
+                    $this->view->respuesta("No se han encontrado peliculas", 404);
                 }
+            } else {
+                $this->view->respuesta("COMPLETE AMBOS CAMPOS", 400);
             }
         } else {
-
             $peliculas = $this->model->conseguirTodasLasPeliculas();
             if (!empty($peliculas)) {
                 $this->view->respuesta($peliculas);
@@ -45,12 +45,16 @@ class PeliculasController
     public function obtenerUnaPelicula($params = null)
     {
         $id = $params[':ID'];
-        $pelicula = $this->model->conseguirPeliculaDB($id);
-
-        if ($pelicula) {
-            $this->view->respuesta($pelicula);
+        if (!is_numeric($id)) {
+            $this->view->respuesta("NO es numero culiao", 404);
         } else {
-            $this->view->respuesta("La tarea con el id=$id no existe", 404);
+            $pelicula = $this->model->conseguirPeliculaDB($id);
+
+            if ($pelicula) {
+                $this->view->respuesta($pelicula);
+            } else {
+                $this->view->respuesta("La tarea con el id=$id no existe", 404);
+            }
         }
     }
     public function borrarUnaPelicula($params = null)
