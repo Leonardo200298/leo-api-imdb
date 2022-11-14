@@ -98,7 +98,7 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor={columna de la tabla}&orden={orden ascendente/descendente}</p>
 
-<p>Ejemplo</p>
+__Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=DESC </p>
 
