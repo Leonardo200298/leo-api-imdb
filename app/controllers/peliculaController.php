@@ -100,7 +100,7 @@ class PeliculasController
             $peliculaEditada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaEditada, 200);
         } else {
-            $this->view->respuesta("No se pueden dejar estos campos sin editar", 400);
+            $this->view->respuesta("No se pueden dejar estos campos sin completar", 400);
         }
     }
 }
