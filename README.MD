@@ -1,4 +1,4 @@
-## Leo api imdb
+# Leo api imdb
 
 # Idea de la api
 
@@ -8,7 +8,7 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 
 # Endpoints basicos del servicio:
 
-# GET (get general, todas las peliculas de la tabla) 
+## GET (get general, todas las peliculas de la tabla) 
 <p> http://localhost/leo-api-imdb/api/peliculas/ </p>
 
 
