@@ -9,26 +9,28 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 # Endpoints basicos del servicio:
 
 ## GET (get general, todas las peliculas de la tabla) 
-<p>Endpoint</p>
+
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/ </p>
 
 ## GET/:ID (trae la pelicula con :ID)
-<p>Endpoint</p>
+
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/:ID </p>
 
-<p>Ejemplo</p>
+__Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/21 </p>
 
 ## POST (Informacion (pelicula) a insertarse en formato JSON, validaciones por si se encuentra incompleta o erronea hechas, si no cumplen dichas validaciones devuelvo un status 400 con un mensaje, en caso de colocar informacion erronea en cuanto a tipos devuelvo un status 404 con un mensaje)
 
-<p>Endpoint</p>
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/ </p>
 
-<p>Ejemplo</p>
+__Ejemplo__
 <p>Formato JSON, via raw:</p>
 <p>
 {
@@ -52,15 +54,15 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 
 ## PUT (Se coloca el ID de la pelicula a editar, si la informacion es correcta devuelvo un status 200, en caso de dejar informacion sin completar para la edicion de la pelicula devuelvo un status 400)
 
-<p>Endpoint</p>
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/:ID </p>
 
-<p>Ejemplo</p>
+__Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/21 </p>
 
-<p>Formato JSON, via raw:</p>
+__Formato JSON, via raw:__
 <p>
 {
     "id_peliculas": "25",
@@ -84,21 +86,21 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 
 ## DELETE/:ID (Elimina la pelicula con el :ID)
 
-<p>Endpoint</p>
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/:ID </p>
 
-<p>Ejemplo</p>
+__Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas/22 </p>
 
 ## Ordenar por una columna de la tabla a eleccion (se puede elegir cualquier columna de la tabla y ordenarla de forma ascende y descendente segun lo requiera)
 
-<p>Endpoint</p>
+__Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor={columna de la tabla}&orden={orden ascendente/descendente}</p>
 
-__Ejemplo__
+[ ] __Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=DESC </p>
 
