@@ -23,17 +23,20 @@ class PeliculasModel
         $query = $this->db->prepare("DELETE FROM peliculas WHERE id_peliculas = ?");
         $query->execute([$id]);
     }
-    public function insertarPeliculaDB($nombre, $anio, $id_genero)
+
+    public function insertarPeliculaDB($nombre, $anio, $produccion, $recaudacion, $id_genero)
     {
-        $query = $this->db->prepare("INSERT INTO peliculas (nombre, anio, id_genero) VALUES (?, ?, ?)");
-        $query->execute([$nombre, $anio, $id_genero]);
+        $query = $this->db->prepare("INSERT INTO peliculas (nombre, anio, produccion, recaudacion, id_genero) VALUES (?, ?, ?, ?, ?)");
+        $query->execute([$nombre, $anio, $produccion, $recaudacion, $id_genero]);
         return $this->db->lastInsertId();
     }
-    public function editarPelicula($nombre, $anio, $id_genero, $id_peliculas)
+
+    public function editarPelicula($nombre, $anio, $produccion, $recaudacion, $id_genero, $id_peliculas)
     {
-        $query = $this->db->prepare("UPDATE peliculas SET nombre = ?, anio = ?, id_genero = ? WHERE id_peliculas = ?");
-        $query->execute([$nombre, $anio, $id_genero, $id_peliculas]);
+        $query = $this->db->prepare("UPDATE peliculas SET nombre = ?, anio = ?, produccion = ?, recaudacion= ?, id_genero = ? WHERE id_peliculas = ?");
+        $query->execute([$nombre, $anio, $produccion, $recaudacion, $id_genero, $id_peliculas]);
     }
+
     public function conseguirTodasLasPeliculas($ordenarPor = null, $orden = null)
     {
         if ((isset($ordenarPor))&&(isset($orden))) {

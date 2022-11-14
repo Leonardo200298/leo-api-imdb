@@ -69,19 +69,21 @@ class PeliculasController
             $this->view->respuesta("La tarea con el id=$id no existe", 404);
         }
     }
+
     public function insertarPelicula($params = null)
     {
         $datosDelForm = $this->getData();
         if (empty($datosDelForm->nombre) || empty($datosDelForm->anio) || empty($datosDelForm->id_genero)) {
             $this->view->respuesta("Complete los datos", 400);
         } else if (is_numeric($datosDelForm->anio) || is_numeric($datosDelForm->id_genero)){
-            $id = $this->model->insertarPeliculaDB($datosDelForm->nombre, $datosDelForm->anio, $datosDelForm->id_genero);
+            $id = $this->model->insertarPeliculaDB($datosDelForm->nombre, $datosDelForm->anio, $datosDelForm->produccion, $datosDelForm->recaudacion, $datosDelForm->id_genero);
             $peliculaCreada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaCreada, 201);
         }else{
             $this->view->respuesta("Los campos año y id_genero deben ser de tipo number", 404);
         }
     }
+
     public function editarPelicula($params = null)
     {
         $id = $params[':ID'];
@@ -90,9 +92,11 @@ class PeliculasController
             $datosDelForm = $this->getData();
             $nombre = $datosDelForm->nombre;
             $anio = $datosDelForm->anio;
+            $produccion = $datosDelForm->produccion;
+            $recaudacion = $datosDelForm->recaudacion;
             $id_genero = $datosDelForm->id_genero;
             $id_peliculas = $datosDelForm->id_peliculas;
-            $peliculaEditada = $this->model->editarPelicula($nombre, $anio, $id_genero, $id_peliculas);
+            $peliculaEditada = $this->model->editarPelicula($nombre, $anio, $produccion, $recaudacion, $id_genero, $id_peliculas);
             $peliculaEditada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaEditada, 200);
         } else {
