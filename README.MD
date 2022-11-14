@@ -29,9 +29,8 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 <p> http://localhost/leo-api-imdb/api/peliculas/ </p>
 
 <p>Ejemplo</p>
-
+<p>Formato JSON, via raw:</p>
 <p>
-Formato JSON, via raw:
 {
     "nombre": "nombre_de_la_pelicula",
     "anio": "0000",
