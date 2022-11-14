@@ -33,12 +33,22 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
 <p>
 Formato JSON, via raw:
 {
-    "nombre": "nombre_de_la_pelicula", //campo tipo string y obligatorio
-    "anio": "0000", ///campo tipo number y obligatorio
-    "produccion": "costo_de_produccion", //campo tipo string y no obligatorio
-    "recaudacion": "recaudacion", //campo tipo string y no obligatorio
-    "id_genero": "genero" //campo tipo number y obligatorio
+    "nombre": "nombre_de_la_pelicula",
+    "anio": "0000",
+    "produccion": "costo_de_produccion", 
+    "recaudacion": "recaudacion", 
+    "id_genero": "genero" 
 }
+</p>
+
+<p>
+    Datos a tener a en cuenta para un POST.
+
+    nombre:campo tipo string y obligatorio.
+    anio:campo tipo number y obligatorio.
+    produccion:campo tipo string y no obligatorio.
+    recaudacion:campo tipo string y no obligatorio.
+    id_genero:/campo tipo number y obligatorio.
 </p>
 
 
