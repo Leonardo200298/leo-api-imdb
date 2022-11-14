@@ -81,3 +81,27 @@ Esta api rinde homenaje a la famosa base de datos en linea "imdb" (famosa base d
     recaudacion:campo tipo string y no obligatorio.
     id_genero:/campo tipo number y obligatorio.
 </p>
+
+## DELETE/:ID (Elimina la pelicula con el :ID)
+
+<p>Endpoint</p>
+
+<p> http://localhost/leo-api-imdb/api/peliculas/:ID </p>
+
+<p>Ejemplo</p>
+
+<p> http://localhost/leo-api-imdb/api/peliculas/22 </p>
+
+## Ordenar por una columna de la tabla a eleccion (se puede elegir cualquier columna de la tabla y ordenarla de forma ascende y descendente segun lo requiera)
+
+<p>Endpoint</p>
+
+<p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor={columna de la tabla}&orden={orden ascendente/descendente}</p>
+
+<p>Ejemplo</p>
+
+<p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=DESC </p>
+
+# Desde ya espero que les sirva este documento, gracias por leer!!
+
+
