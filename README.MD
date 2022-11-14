@@ -100,7 +100,7 @@ __Endpoint__
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor={columna de la tabla}&orden={orden ascendente/descendente}</p>
 
-- [] __Ejemplo__
+__Ejemplo__
 
 <p> http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=DESC </p>
 
