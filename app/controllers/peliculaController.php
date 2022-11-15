@@ -23,7 +23,6 @@ class PeliculasController
 
     public function obtenerTodasLasPeliculas($params = null)
     {
-        /* http://localhost/leo-api-imdb/api/peliculas?ordenarPor=id_peliculas&orden=ASC */
         if (isset($_GET['ordenarPor']) || isset($_GET['orden'])) {
             if (isset($_GET['ordenarPor']) && isset($_GET['orden'])) {
                 $peliculas = $this->model->conseguirTodasLasPeliculas($_GET['ordenarPor'], $_GET['orden']);
@@ -33,7 +32,7 @@ class PeliculasController
                     $this->view->respuesta("No se han encontrado peliculas", 404);
                 }
             } else {
-                $this->view->respuesta("COMPLETE AMBOS CAMPOS", 400);
+                $this->view->respuesta("Complete ambos campos", 400);
             }
         } else {
             $peliculas = $this->model->conseguirTodasLasPeliculas();
