@@ -46,7 +46,7 @@ class PeliculasController
     {
         $id = $params[':ID'];
         if (!is_numeric($id)) {
-            $this->view->respuesta("NO es numero culiao", 404);
+            $this->view->respuesta("Solo numeros", 404);
         } else {
             $pelicula = $this->model->conseguirPeliculaDB($id);
 
