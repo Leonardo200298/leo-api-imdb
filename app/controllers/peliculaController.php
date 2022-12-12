@@ -55,7 +55,10 @@ class PeliculasController
                 $this->view->respuesta("La tarea con el id=$id no existe", 404);
             }
         }
-    }
+ 
+}
+
+    
     public function borrarUnaPelicula($params = null)
     {
         $id = $params[':ID'];
