@@ -45,14 +45,14 @@ class PeliculasController
     {
         $id = $params[':ID'];
         if (!is_numeric($id)) {
-            $this->view->respuesta("Solo numeros", 404);
+            $this->view->respuesta("Parametro solo numerico", 404);
         } else {
             $pelicula = $this->model->conseguirPeliculaDB($id);
 
             if ($pelicula) {
                 $this->view->respuesta($pelicula);
             } else {
-                $this->view->respuesta("La tarea con el id=$id no existe", 404);
+                $this->view->respuesta("La pelicula con el id=$id no existe", 404);
             }
         }
  
@@ -68,7 +68,7 @@ class PeliculasController
             $this->model->borrarPelicula($id);
             $this->view->respuesta($peliculaABorrar);
         } else {
-            $this->view->respuesta("La tarea con el id=$id no existe", 404);
+            $this->view->respuesta("La pelicula con el id=$id no existe", 404);
         }
     }
 
@@ -82,7 +82,7 @@ class PeliculasController
             $peliculaCreada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaCreada, 201);
         }else{
-            $this->view->respuesta("Los campos año y id_genero deben ser de tipo number", 404);
+            $this->view->respuesta("Los campos año y id_genero deben ser de tipo numerico", 404);
         }
     }
 
@@ -102,7 +102,7 @@ class PeliculasController
             $peliculaEditada = $this->model->conseguirPeliculaDB($id);
             $this->view->respuesta($peliculaEditada, 200);
         } else {
-            $this->view->respuesta("No se pueden dejar estos campos sin completar", 400);
+            $this->view->respuesta("No puede dejar estos campos sin completar", 400);
         }
     }
 }

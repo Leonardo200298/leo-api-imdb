@@ -16,7 +16,6 @@ class PeliculasModel
         $query->execute([$id]);
         $pelicula = $query->fetch(PDO::FETCH_OBJ);
         return $pelicula;
-        /* "SELECT * FROM peliculas LEFT JOIN generos ON id_genero = id_genero WHERE id_peliculas = ?" */
     }
     public function borrarPelicula($id)
     {
